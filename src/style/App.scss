@@ -48,6 +48,13 @@ html {
     }
 }
 
+.dice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .dice {
     background-color: #fff;
     border: 2px solid #000;
