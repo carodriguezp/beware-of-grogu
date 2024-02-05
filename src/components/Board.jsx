@@ -8,7 +8,7 @@ function Board({ groguPosition }) {
 
   const handleDiv = () => {
 
-    return boardDiv.map((i) => <Cell groguPosition={groguPosition} key={i} />)
+    return boardDiv.map((cell, i) => <Cell groguPosition={groguPosition} key={i} keyProp={i} />)
   }
 
 

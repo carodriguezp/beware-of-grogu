@@ -35,9 +35,6 @@ function App() {
 
       setGroguPosition(groguPosition + 1)
 
-
-
-
     }
   };
 
@@ -63,7 +60,7 @@ function App() {
           <Dice handleFunction={rollDice} />
           <GameStatus status={gameResult} />
         </section>
-        ;
+
         <section className="goods-container">
           <div className="goods-item">{arrayCookies}</div>
           {/* <div className="goods-item">{goods[1]}</div>
