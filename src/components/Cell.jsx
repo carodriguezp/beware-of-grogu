@@ -1,8 +1,16 @@
+import Grogu from "./Grogu";
 
+function Cell({ key, groguPosition }) {
 
-function Cell({ keyValue }) {
+    console.log(key)
+
     return (
-        <div className="cell" key={keyValue}></div>
+
+        <div className="cell" id={key}>
+
+            {groguPosition === parseInt.keyValue ? <Grogu /> : null}
+
+        </div>
     )
 }
 

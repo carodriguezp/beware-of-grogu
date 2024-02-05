@@ -2,7 +2,6 @@ import '../style/App.scss';
 import { useState } from 'react';
 import Header from './Header';
 import Board from './Board';
-import Grogu from './Grogu';
 import Dice from './Dice';
 import GameStatus from './GameStatus';
 import RestartButton from './RestartButton';
@@ -13,7 +12,7 @@ function App() {
   const [arrayFrog, setFrog] = useState(['🐸', '🐸', '🐸']);
   // const [goods, setGoods] = useState([arrayCookies, arrayEgg, arrayFrog]);
 
-  const [groguMove, setGroguMove] = useState(0);
+  const [groguPosition, setGroguPosition] = useState(0);
   const [diceResult, setDiceResult] = useState(0);
   const [gameResult, setGameResult] = useState('');
 
@@ -33,6 +32,12 @@ function App() {
     } else if (diceNumber === 4) {
       setGameResult('Grogu avanza una casilla');
       ///movimiento del pie///
+
+      setGroguPosition(groguPosition + 1)
+
+
+
+
     }
   };
 
@@ -53,8 +58,7 @@ function App() {
       <Header />
 
       <main className="page">
-        <Board />
-        <Grogu />
+        <Board groguPosition={groguPosition} />
         <section className="dice-container">
           <Dice handleFunction={rollDice} />
           <GameStatus status={gameResult} />
