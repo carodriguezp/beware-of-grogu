@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 
-function Dice({ handleFunction }) {
+function Dice({ handleFunction, style }) {
   const handleClick = () => {
     handleFunction();
   };
   return (
-    <button className="dice" onClick={handleClick}>
+    <button
+      className={`dice ${style ? 'dice-hidden' : ''}`}
+      onClick={handleClick}
+    >
       Lanzar Dado
     </button>
   );

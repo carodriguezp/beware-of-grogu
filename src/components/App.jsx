@@ -1,20 +1,22 @@
 import '../style/App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './Header';
 import Board from './Board';
 import Dice from './Dice';
 import GameStatus from './GameStatus';
 import RestartButton from './RestartButton';
+import Goods from './Goods';
+import Form from './Form';
 
 function App() {
   const [arrayCookies, setCookies] = useState(['🍪', '🍪', '🍪']);
   const [arrayEgg, setEgg] = useState(['🥚', '🥚', '🥚']);
   const [arrayFrog, setFrog] = useState(['🐸', '🐸', '🐸']);
-  // const [goods, setGoods] = useState([arrayCookies, arrayEgg, arrayFrog]);
-
   const [groguPosition, setGroguPosition] = useState(0);
   const [diceResult, setDiceResult] = useState(0);
   const [gameResult, setGameResult] = useState('');
+  const [hidden, setHidden] = useState(false);
+  const [name, setName] = useState('');
 
   const rollDice = () => {
     const diceNumber = Math.ceil(Math.random() * 4);
@@ -32,11 +34,27 @@ function App() {
     } else if (diceNumber === 4) {
       setGameResult('Grogu avanza una casilla');
       ///movimiento del pie///
-
-      setGroguPosition(groguPosition + 1)
-
+      setGroguPosition(groguPosition + 1);
     }
   };
+
+  // const userName = (value) => {
+  //   setName(value);
+  // };
+
+  useEffect(() => {
+    if (
+      arrayCookies.length === 0 &&
+      arrayEgg.length === 0 &&
+      arrayFrog.length === 0
+    ) {
+      setGameResult('Has ganado');
+      setHidden(!hidden);
+    } else if (groguPosition === 6) {
+      setGameResult('Has perdido');
+      setHidden(!hidden);
+    }
+  }, [arrayCookies, arrayEgg, arrayFrog, groguPosition]);
 
   ///funcion restart button
   const RestartGame = () => {
@@ -46,6 +64,8 @@ function App() {
     setEgg(['🥚', '🥚', '🥚']);
     setFrog(['🐸', '🐸', '🐸']);
     setGameResult('');
+    setGroguPosition(0);
+    setHidden(!hidden);
 
     //poner el pie al principio
   };
@@ -57,28 +77,17 @@ function App() {
       <main className="page">
         <Board groguPosition={groguPosition} />
         <section className="dice-container">
-          <Dice handleFunction={rollDice} />
+          <Dice handleFunction={rollDice} style={hidden} />
           <GameStatus status={gameResult} />
         </section>
+        <Goods array={arrayCookies} />
+        <Goods array={arrayEgg} />
+        <Goods array={arrayFrog} />
 
-        <section className="goods-container">
-          <div className="goods-item">{arrayCookies}</div>
-          {/* <div className="goods-item">{goods[1]}</div>
-          <div className="goods-item">{goods[1]}</div> */}
-        </section>
-        <section className="goods-container">
-          <div className="goods-item">{arrayEgg}</div>
-          {/* <div className="goods-item">{goods[0]}</div>
-          <div className="goods-item">{goods[0]}</div> */}
-        </section>
-        <section className="goods-container">
-          <div className="goods-item">{arrayFrog}</div>
-          {/* <div className="goods-item">{goods[2]}</div>
-          <div className="goods-item">{goods[2]}</div> */}
-        </section>
         <section>
           <RestartButton handleReset={RestartGame} />
         </section>
+        <Form userName={name} />
       </main>
     </div>
   );
