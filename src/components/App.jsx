@@ -1,5 +1,6 @@
 import '../style/App.scss';
 import { useEffect, useState } from 'react';
+import { Route, Routes } from "react-router-dom";
 import Header from './Header';
 import Board from './Board';
 import Dice from './Dice';
@@ -7,13 +8,15 @@ import GameStatus from './GameStatus';
 import RestartButton from './RestartButton';
 import Goods from './Goods';
 import Form from './Form';
+import Footer from './Footer';
+import Instructions from './Instructions';
+
 
 function App() {
   const [arrayCookies, setCookies] = useState(['🍪', '🍪', '🍪']);
   const [arrayEgg, setEgg] = useState(['🥚', '🥚', '🥚']);
   const [arrayFrog, setFrog] = useState(['🐸', '🐸', '🐸']);
   const [groguPosition, setGroguPosition] = useState(0);
-  const [diceResult, setDiceResult] = useState(0);
   const [gameResult, setGameResult] = useState('');
   const [hidden, setHidden] = useState(false);
   const [name, setName] = useState('');
@@ -38,9 +41,9 @@ function App() {
     }
   };
 
-  // const userName = (value) => {
-  //   setName(value);
-  // };
+  const userName = (value) => {
+    setName(value);
+  };
 
   useEffect(() => {
     if (
@@ -48,10 +51,10 @@ function App() {
       arrayEgg.length === 0 &&
       arrayFrog.length === 0
     ) {
-      setGameResult('Has ganado');
+      setGameResult('Ganaste ' + name + ', Mando completa la misión');
       setHidden(!hidden);
     } else if (groguPosition === 6) {
-      setGameResult('Has perdido');
+      setGameResult('¡¡Grogu se ha comido el cargamento!! ' + name + ', has perdido');
       setHidden(!hidden);
     }
   }, [arrayCookies, arrayEgg, arrayFrog, groguPosition]);
@@ -66,6 +69,7 @@ function App() {
     setGameResult('');
     setGroguPosition(0);
     setHidden(!hidden);
+    setName('');
 
     //poner el pie al principio
   };
@@ -75,10 +79,16 @@ function App() {
       <Header />
 
       <main className="page">
+        {/*INTRUCTIONS */}
+        <Routes>
+          <Route path='/instructions' element={<Instructions />} />
+
+        </Routes>
+
         <Board groguPosition={groguPosition} />
         <section className="dice-container">
           <Dice handleFunction={rollDice} style={hidden} />
-          <GameStatus status={gameResult} />
+          <GameStatus status={gameResult} name={name} />
         </section>
         <Goods array={arrayCookies} />
         <Goods array={arrayEgg} />
@@ -87,8 +97,10 @@ function App() {
         <section>
           <RestartButton handleReset={RestartGame} />
         </section>
-        <Form userName={name} />
+        <Form name={name} userName={userName} />
       </main>
+      {/*OPTIONS */}
+      <Footer />
     </div>
   );
 }

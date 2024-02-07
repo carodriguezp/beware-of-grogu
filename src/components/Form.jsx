@@ -1,12 +1,17 @@
-function Form({ userName }) {
-  const handleChange = (ev) => {};
+function Form({ userName, name }) {
+
+  const handleChange = (ev) => {
+    userName(ev.target.value)
+  };
+
+
   return (
     <form>
       <input
         type="text"
         id=""
         placeholder="Escribe tu nombre..."
-        value={userName}
+        value={name}
         onChange={handleChange}
       />
     </form>
