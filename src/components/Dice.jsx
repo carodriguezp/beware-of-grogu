@@ -16,5 +16,6 @@ function Dice({ handleFunction, style }) {
 
 Dice.propTypes = {
   handleFunction: PropTypes.func.isRequired,
+  style: PropTypes.bool
 };
 export default Dice;
