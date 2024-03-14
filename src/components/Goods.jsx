@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Goods({ array }) {
   return (
     <section className="goods-container">
@@ -5,5 +7,9 @@ function Goods({ array }) {
     </section>
   );
 }
+
+Goods.propTypes = {
+  array: PropTypes.array,
+};
 
 export default Goods;

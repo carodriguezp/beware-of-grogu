@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function RestartButton({ handleReset }) {
   const handleClick = () => {
     handleReset();
@@ -9,5 +11,10 @@ function RestartButton({ handleReset }) {
     </button>
   );
 }
+
+RestartButton.propTypes = {
+  handleReset: PropTypes.func,
+
+};
 
 export default RestartButton;

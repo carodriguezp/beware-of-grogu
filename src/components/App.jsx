@@ -63,7 +63,6 @@ function App() {
 
   ///funcion restart button
   const RestartGame = () => {
-    //matriz emogis
 
     setCookies(['🍪', '🍪', '🍪']);
     setEgg(['🥚', '🥚', '🥚']);
@@ -73,7 +72,6 @@ function App() {
     setHidden(!hidden);
     setName('');
 
-    //poner el pie al principio
   };
 
   return (

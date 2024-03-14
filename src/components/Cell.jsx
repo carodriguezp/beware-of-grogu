@@ -1,4 +1,5 @@
 import Grogu from "./Grogu";
+import PropTypes from 'prop-types';
 
 function Cell({ keyProp, groguPosition }) {
 
@@ -12,5 +13,12 @@ function Cell({ keyProp, groguPosition }) {
         </div>
     )
 }
+
+Cell.propTypes = {
+    keyProp: PropTypes.number,
+    groguPosition: PropTypes.number,
+
+};
+
 
 export default Cell

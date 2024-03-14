@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import Cell from "./Cell";
 
 function Board({ groguPosition }) {
@@ -11,16 +12,16 @@ function Board({ groguPosition }) {
     return boardDiv.map((cell, i) => <Cell groguPosition={groguPosition} key={i} keyProp={i} />)
   }
 
-
-
   return (
     <section className="board">
       {handleDiv()}
     </section>
   );
-
-
-
 }
+
+Board.propTypes = {
+  groguPosition: PropTypes.number,
+
+};
 
 export default Board;

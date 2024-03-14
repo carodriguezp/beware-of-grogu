@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Form({ userName, name }) {
 
   const handleChange = (ev) => {
@@ -17,5 +19,11 @@ function Form({ userName, name }) {
     </form>
   );
 }
+
+Form.propTypes = {
+  userName: PropTypes.func,
+  name: PropTypes.string,
+
+};
 
 export default Form;
