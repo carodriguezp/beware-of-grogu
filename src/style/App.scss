@@ -78,8 +78,8 @@ html {
 }
 
 .dice {
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: #ccffe9;
+  border: solid 3px black;
   padding: 10px;
   cursor: pointer;
   font-weight: bold;
@@ -110,6 +110,7 @@ html {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: background-color 0.2s ease;
   margin-top: 20px;
+  border: solid 3px black;
 }
 
 .restart-button:hover {
@@ -163,11 +164,18 @@ input[type='text'] {
 input[type='text']:focus {
   outline: none;
   border-color: #4caf50;
-  box-shadow: 0px 0px 8px rgba(76, 175, 80, 0.5);
+  box-shadow: 0px 0px 8px rgba(2, 217, 149, 1);
 }
 
 input[type='text']::placeholder {
-  color: #999;
+  color: #7a7878;
+}
+
+.input-form {
+  background: linear-gradient(94deg, rgba(204, 255, 233, 1) 0%, rgba(204, 255, 233, 1) 61%, rgba(179, 0, 25, 1) 100%);
+  color: #b30019;
+  border: solid 3px black;
+  font-weight: bold;
 }
 
 .instructions {

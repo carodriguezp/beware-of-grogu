@@ -8,13 +8,14 @@ function Form({ userName, name }) {
 
 
   return (
-    <form>
+    <form >
       <input
         type="text"
         id=""
         placeholder="Escribe tu nombre..."
         value={name}
         onChange={handleChange}
+        className='input-form'
       />
     </form>
   );
