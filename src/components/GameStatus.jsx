@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function GameStatus({ status }) {
+function GameStatus({ status, name }) {
   return <div className="game-status">{status}</div>;
 }
 

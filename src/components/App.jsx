@@ -46,6 +46,8 @@ function App() {
   };
 
   useEffect(() => {
+
+
     if (
       arrayCookies.length === 0 &&
       arrayEgg.length === 0 &&
